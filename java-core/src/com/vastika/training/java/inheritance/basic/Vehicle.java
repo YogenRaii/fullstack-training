@@ -1,5 +1,7 @@
 package com.vastika.training.java.inheritance.basic;
 
+import java.util.Objects;
+
 /**
  * Parent class
  *
@@ -8,7 +10,7 @@ package com.vastika.training.java.inheritance.basic;
 public abstract class Vehicle {
     public abstract String getBrand();
 
-    public abstract int getEngineType();
+    protected abstract int getEngineType();
 
     public void honk() {
         System.out.println("Pip, Pip!");

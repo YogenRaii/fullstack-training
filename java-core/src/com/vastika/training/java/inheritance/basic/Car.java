@@ -15,4 +15,9 @@ public class Car extends FourWheeler {
     public String getBrand() {
         return brand;
     }
+
+    @Override
+    public int getEngineType() {
+        return 6;
+    }
 }
