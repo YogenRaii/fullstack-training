@@ -1,7 +1,5 @@
 package com.vastika.training.java.polymorphism.basics;
 
-import java.util.Objects;
-
 public class DriverClass {
     public static void main(String[] args) {
         /**
