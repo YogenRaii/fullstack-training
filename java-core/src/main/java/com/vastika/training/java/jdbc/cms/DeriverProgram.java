@@ -12,7 +12,7 @@ public class DeriverProgram {
             System.out.println("2. To print student details");
             System.out.println("3. To update student record");
 
-            // add functionality to deleete
+            // add functionality to delete
 
             System.out.println("---------------------------");
             Scanner scanner = new Scanner(System.in);
