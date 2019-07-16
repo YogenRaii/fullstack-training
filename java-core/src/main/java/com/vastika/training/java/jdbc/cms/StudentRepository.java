@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentRepository {
-    public List<Student> getAllStudents() {
+public class StudentRepository implements CrudRepository<Student> {
+    @Override
+    public List<Student> findAll() {
         Connection connection = DbConnector.getConnection();
 
         List<Student> students = new ArrayList<>();
@@ -35,7 +36,8 @@ public class StudentRepository {
         return students;
     }
 
-    public Student findStudentById(int userId) {
+    @Override
+    public Student findById(int userId) {
         Connection connection = DbConnector.getConnection();
 
         try {
@@ -58,7 +60,8 @@ public class StudentRepository {
         return null;
     }
 
-    public boolean updateStudent(Student student) {
+    @Override
+    public boolean update(Student student) {
         Connection connection = DbConnector.getConnection();
 
         try {
@@ -70,6 +73,25 @@ public class StudentRepository {
             int rs = ps.executeUpdate();
 
             return rs > 0 ? true : false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteById(int studentId) {
+        Connection connection = DbConnector.getConnection();
+
+        try {
+            String sql = "delete from student where id = " + studentId;
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            int rs = ps.executeUpdate();
+
+            return rs > 0 ? true: false;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

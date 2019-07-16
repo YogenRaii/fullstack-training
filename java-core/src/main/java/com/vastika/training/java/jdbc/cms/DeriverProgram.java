@@ -11,6 +11,7 @@ public class DeriverProgram {
             System.out.println("1. To list all student");
             System.out.println("2. To print student details");
             System.out.println("3. To update student record");
+            System.out.println("4. To delete student record");
 
             // add functionality to delete
 
@@ -21,14 +22,14 @@ public class DeriverProgram {
             StudentRepository repository = new StudentRepository();
 
             if (choice == 1) {
-                List<Student> students = repository.getAllStudents();
+                List<Student> students = repository.findAll();
 
                 System.out.println(students);
             } else if (choice == 2) {
 
                 System.out.print("Enter student id: ");
                 int studentId = scanner.nextInt();
-                Student studentId2 = repository.findStudentById(studentId);
+                Student studentId2 = repository.findById(studentId);
                 System.out.println(studentId2);
             } else if (choice == 3) {
                 Scanner sc = new Scanner(System.in);
@@ -42,10 +43,21 @@ public class DeriverProgram {
                 double gpa = Double.valueOf(sc.next());
                 Student toUpdate = new Student(id, firstName, lastName, gpa);
 
-                boolean updated = repository.updateStudent(toUpdate);
+                boolean updated = repository.update(toUpdate);
 
                 if (updated) {
                     System.out.println("Success!");
+                } else {
+                    System.out.println("Failed!");
+                }
+            } else if (choice == 4) {
+
+                System.out.print("Enter student id: ");
+                int studentId = scanner.nextInt();
+                boolean deleted = repository.deleteById(studentId);
+
+                if (deleted) {
+                    System.out.println("Success");
                 } else {
                     System.out.println("Failed!");
                 }
