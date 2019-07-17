@@ -6,6 +6,27 @@ import com.vastika.training.java.jdbc.cms.services.impl.TeacherService;
 
 import java.util.Scanner;
 
+
+/**
+ * final, finally, finalize() and their use in cms
+ *
+ * finally block -> to close the resources like connection, file stream
+ *
+ * static
+ *
+ * service injection
+ *
+ * parameter in prepared statements
+ *
+ *
+ *
+ * OOP principles:
+ * P2I
+ * Abstractions
+ * Polymorphism
+ * Inheritance
+ *
+ */
 public class DeriverProgram {
     public static void main(String[] args) {
         BaseService studentService = new StudentService();

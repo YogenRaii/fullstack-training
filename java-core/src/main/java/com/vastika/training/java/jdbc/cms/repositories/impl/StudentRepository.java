@@ -14,11 +14,9 @@ import java.util.List;
 public class StudentRepository implements CrudRepository<Student> {
     @Override
     public List<Student> findAll() {
-        Connection connection = DbConnector.getConnection();
-
         List<Student> students = new ArrayList<>();
 
-        try {
+        try (Connection connection = DbConnector.getConnection()) {
             PreparedStatement ps = connection.prepareStatement("select * from student");
 
             ResultSet rs = ps.executeQuery();
@@ -42,9 +40,8 @@ public class StudentRepository implements CrudRepository<Student> {
 
     @Override
     public Student findById(int userId) {
-        Connection connection = DbConnector.getConnection();
 
-        try {
+        try(Connection connection = DbConnector.getConnection()) {
             PreparedStatement ps = connection.prepareStatement("select * from student where id = " + userId);
 
             ResultSet rs = ps.executeQuery();
@@ -66,9 +63,8 @@ public class StudentRepository implements CrudRepository<Student> {
 
     @Override
     public boolean update(Student student) {
-        Connection connection = DbConnector.getConnection();
 
-        try {
+        try(Connection connection = DbConnector.getConnection()) {
             String sql = "update student set firstName='" + student.getFirstName()
                     + "', lastName='" + student.getLastName() + "', gpa=" + student.getGpa() + " where id=" + student.getId();
 
@@ -85,9 +81,7 @@ public class StudentRepository implements CrudRepository<Student> {
 
     @Override
     public boolean deleteById(int studentId) {
-        Connection connection = DbConnector.getConnection();
-
-        try {
+        try ( Connection connection = DbConnector.getConnection()) {
             String sql = "delete from student where id = " + studentId;
 
             PreparedStatement ps = connection.prepareStatement(sql);

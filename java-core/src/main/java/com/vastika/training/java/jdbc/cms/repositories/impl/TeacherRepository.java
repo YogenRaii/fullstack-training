@@ -15,14 +15,18 @@ public class TeacherRepository implements CrudRepository<Teacher> {
 
     @Override
     public List<Teacher> findAll() {
-        Connection connection = DbConnector.getConnection();
+
 
         List<Teacher> teacherList = new ArrayList<>();
         String sql = "SELECT * FROM teacher";
-        try {
+
+        /**
+         * Try-with-resource -> closes resources automatically; no need to have finally block and close statement
+         */
+        try (Connection connection = DbConnector.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
@@ -34,16 +38,16 @@ public class TeacherRepository implements CrudRepository<Teacher> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
     @Override
     public Teacher findById(int id) {
-        Connection connection = DbConnector.getConnection();
 
         String sql = "SELECT * FROM teacher WHERE id = " + id;
 
-        try {
+        try (Connection connection = DbConnector.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultset = preparedStatement.executeQuery();
 
@@ -64,12 +68,11 @@ public class TeacherRepository implements CrudRepository<Teacher> {
 
     @Override
     public boolean update(Teacher teacher) {
-        Connection connection = DbConnector.getConnection();
 
         String sql = "UPDATE teacher SET firstName = '" + teacher.getFirstName() +
                 "', lastName = '" + teacher.getLastName() + "', subject = '" + teacher.getSubject() + "' WHERE id = " +
                 teacher.getId();
-        try {
+        try (Connection connection = DbConnector.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int resultSet = preparedStatement.executeUpdate();
             return resultSet > 0 ? true : false;
@@ -81,11 +84,10 @@ public class TeacherRepository implements CrudRepository<Teacher> {
 
     @Override
     public boolean deleteById(int id) {
-        Connection connection = DbConnector.getConnection();
 
         String sql = "DELETE FROM teacher WHERE id = " + id;
 
-        try {
+        try (Connection connection = DbConnector.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int resultSet = preparedStatement.executeUpdate();
             return resultSet > 0 ? true : false;
