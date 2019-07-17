@@ -1,5 +1,6 @@
 package com.vastika.training.java.jdbc.cms.controllers;
 
+import com.vastika.training.java.jdbc.cms.services.BaseService;
 import com.vastika.training.java.jdbc.cms.services.impl.StudentService;
 import com.vastika.training.java.jdbc.cms.services.impl.TeacherService;
 
@@ -7,9 +8,9 @@ import java.util.Scanner;
 
 public class DeriverProgram {
     public static void main(String[] args) {
-        StudentService studentService = new StudentService();
+        BaseService studentService = new StudentService();
 
-        TeacherService teacherService = new TeacherService();
+        BaseService teacherService = new TeacherService();
 
         String input = "yes";
         while (!"no".equals(input)) {
