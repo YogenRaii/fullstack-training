@@ -45,10 +45,15 @@ public class TeacherRepository implements CrudRepository<Teacher> {
     @Override
     public Teacher findById(int id) {
 
-        String sql = "SELECT * FROM teacher WHERE id = " + id;
+        String sql = "SELECT * FROM teacher WHERE id = ?";
 
         try (Connection connection = DbConnector.getConnection()) {
+            /**
+             * Parameterized statement prevents from SQL injection
+             */
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
             ResultSet resultset = preparedStatement.executeQuery();
 
             while (resultset.next()) {
@@ -69,11 +74,14 @@ public class TeacherRepository implements CrudRepository<Teacher> {
     @Override
     public boolean update(Teacher teacher) {
 
-        String sql = "UPDATE teacher SET firstName = '" + teacher.getFirstName() +
-                "', lastName = '" + teacher.getLastName() + "', subject = '" + teacher.getSubject() + "' WHERE id = " +
-                teacher.getId();
+        String sql = "UPDATE teacher SET firstName = ?, lastName = ?, subject = ? WHERE id = ?";
         try (Connection connection = DbConnector.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, teacher.getFirstName());
+            preparedStatement.setString(2, teacher.getLastName());
+            preparedStatement.setString(3, teacher.getSubject());
+            preparedStatement.setInt(4, teacher.getId());
+
             int resultSet = preparedStatement.executeUpdate();
             return resultSet > 0 ? true : false;
         } catch (SQLException e) {
@@ -85,10 +93,11 @@ public class TeacherRepository implements CrudRepository<Teacher> {
     @Override
     public boolean deleteById(int id) {
 
-        String sql = "DELETE FROM teacher WHERE id = " + id;
+        String sql = "DELETE FROM teacher WHERE id = ?";
 
         try (Connection connection = DbConnector.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
             int resultSet = preparedStatement.executeUpdate();
             return resultSet > 0 ? true : false;
         } catch (SQLException e) {

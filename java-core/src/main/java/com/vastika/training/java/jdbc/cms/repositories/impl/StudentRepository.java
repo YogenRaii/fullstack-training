@@ -42,7 +42,8 @@ public class StudentRepository implements CrudRepository<Student> {
     public Student findById(int userId) {
 
         try(Connection connection = DbConnector.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement("select * from student where id = " + userId);
+            PreparedStatement ps = connection.prepareStatement("select * from student where id=?");
+            ps.setInt(1, userId);
 
             ResultSet rs = ps.executeQuery();
 
@@ -65,10 +66,13 @@ public class StudentRepository implements CrudRepository<Student> {
     public boolean update(Student student) {
 
         try(Connection connection = DbConnector.getConnection()) {
-            String sql = "update student set firstName='" + student.getFirstName()
-                    + "', lastName='" + student.getLastName() + "', gpa=" + student.getGpa() + " where id=" + student.getId();
+            String sql = "update student set firstName=?, lastName=?, gpa=? where id=?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, student.getFirstName());
+            ps.setString(2, student.getLastName());
+            ps.setDouble(3, student.getGpa());
+            ps.setInt(4, student.getId());
 
             int rs = ps.executeUpdate();
 
@@ -82,9 +86,10 @@ public class StudentRepository implements CrudRepository<Student> {
     @Override
     public boolean deleteById(int studentId) {
         try ( Connection connection = DbConnector.getConnection()) {
-            String sql = "delete from student where id = " + studentId;
+            String sql = "delete from student where id = ?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, studentId);
 
             int rs = ps.executeUpdate();
 
