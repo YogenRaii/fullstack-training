@@ -1,5 +1,8 @@
-package com.vastika.training.java.jdbc.cms;
+package com.vastika.training.java.jdbc.cms.models;
 
+/**
+ * Student model
+ */
 public class Student extends Object{
     private int id;
     private String firstName;

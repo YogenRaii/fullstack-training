@@ -1,10 +1,14 @@
-package com.vastika.training.java.jdbc.cms;
+package com.vastika.training.java.jdbc.cms.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbConnector {
+    /**
+     * Util method to provider jdbc connection
+     * @return
+     */
     public static Connection getConnection() {
 
         // register driver class
