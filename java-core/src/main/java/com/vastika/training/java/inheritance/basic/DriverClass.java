@@ -7,7 +7,7 @@ package com.vastika.training.java.inheritance.basic;
  */
 public class DriverClass {
     public static void main(String[] args) {
-        Car hondaCar = new Car("Honda");
+        Vehicle hondaCar = new Car("Honda");
         // calls method on Car
         System.out.println(hondaCar.getBrand());
         // calls method on FourWheeler
