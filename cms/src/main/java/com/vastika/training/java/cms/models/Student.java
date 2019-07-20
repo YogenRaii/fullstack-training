@@ -1,4 +1,4 @@
-package com.vastika.training.java.cms;
+package com.vastika.training.java.cms.models;
 
 /**
  * Student model
