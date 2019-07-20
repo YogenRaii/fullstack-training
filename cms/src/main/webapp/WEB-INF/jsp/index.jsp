@@ -13,6 +13,11 @@
 <body>
 
 <div class="container">
+    <form class="form-inline" action="info">
+        <input type="text" name="studentId" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Enter Student ID">
+        <button type="submit" class="btn btn-primary">Searcdh</button>
+    </form>
+
     <h2>All Students</h2>
     <table class="table">
         <thead>

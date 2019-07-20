@@ -29,8 +29,8 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
-    public String getInfo(Model model, @PathVariable("id") int id) {
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    public String getInfo(Model model, @RequestParam("studentId") int id) {
         Student student = this.studentRepository.findById(id);
         model.addAttribute("student", student);
         return "info";
