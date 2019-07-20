@@ -20,6 +20,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>GPA</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,10 @@
                 <td>${student.id}</td>
                 <td>${student.firstName} ${student.lastName}</td>
                 <td>${student.gpa}</td>
+                <td>
+                    <button name="edit-button" class="btn btn-primary">Edit</button>
+                    <button name="delete-button" class="btn btn-danger">Delete</button>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

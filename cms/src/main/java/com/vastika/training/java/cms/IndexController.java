@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class HelloController {
+public class IndexController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
         List<Student> students = new ArrayList<>();
