@@ -5,6 +5,10 @@
     <title>Hello!</title>
 </head>
 <body>
-    <h2 class="hello-title">Hello ${name}!</h2>
+<h2>Student Details</h2>
+<p>${student.id}</p>
+<p>${student.firstName}</p>
+<p>${student.lastName}</p>
+<p>${student.gpa}</p>
 </body>
 </html>
