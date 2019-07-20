@@ -6,12 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class HelloController {
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String hello(Model model, @RequestParam(value = "q", defaultValue = "World") String name) {
-        model.addAttribute("name", name);
-        return "hello";
+    public String index(Model model) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(1, "Dheeraj", "Cheetri", 4.0));
+        students.add(new Student(2, "Roshan", "Shrestha", 4.0));
+        students.add(new Student(3, "Saurav", "Shrestha", 3.8));
+        students.add(new Student(4, "Nabin", "Thapa", 4.0));
+
+        model.addAttribute("students", students);
+        return "index";
     }
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
@@ -20,4 +29,5 @@ public class HelloController {
         model.addAttribute("student", student);
         return "info";
     }
+
 }
