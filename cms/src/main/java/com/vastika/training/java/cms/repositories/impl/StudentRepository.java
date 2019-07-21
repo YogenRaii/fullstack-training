@@ -101,4 +101,20 @@ public class StudentRepository implements CrudRepository<Student> {
         }
         return false;
     }
+
+    @Override
+    public void insert(Student student) {
+        try (Connection connection = DbConnector.getConnection()){
+            String sql = "INSERT INTO STUDENT (id, firstName, lastName, gpa) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, student.getId());
+            preparedStatement.setString(2, student.getFirstName());
+            preparedStatement.setString(3, student.getLastName());
+            preparedStatement.setDouble(4, student.getGpa());
+            preparedStatement.execute();
+            System.out.println("Data inserted into Students.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

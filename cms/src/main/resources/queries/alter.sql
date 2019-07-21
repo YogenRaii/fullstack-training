@@ -1,0 +1,1 @@
+ALTER TABLE student MODIFY COLUMN id INT auto_increment;
