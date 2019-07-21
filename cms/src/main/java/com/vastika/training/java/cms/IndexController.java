@@ -3,12 +3,11 @@ package com.vastika.training.java.cms;
 import com.vastika.training.java.cms.models.Student;
 import com.vastika.training.java.cms.repositories.CrudRepository;
 import com.vastika.training.java.cms.repositories.impl.StudentRepository;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,4 +35,16 @@ public class IndexController {
         return "info";
     }
 
+    @RequestMapping(value = "/students/{id}/edit", method = RequestMethod.GET)
+    public String getUpdateForm(Model model, @PathVariable("id") int id) {
+        Student student = this.studentRepository.findById(id);
+        model.addAttribute("student", student);
+        return "studentForm";
+    }
+
+    @RequestMapping(value = "/students", method = RequestMethod.POST)
+    public String upsertStudent(@ModelAttribute("student") Student student) {
+        this.studentRepository.update(student);
+        return "redirect:/";
+    }
 }
