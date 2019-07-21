@@ -1,11 +1,22 @@
 package com.vastika.training.java.cms.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Student model
  */
-public class Student extends Object{
+@Entity
+@Table(name = "student")
+public class Student {
+    @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "firstName")
     private String firstName;
+    @Column(name = "lastName")
     private String lastName;
     private double gpa;
 
