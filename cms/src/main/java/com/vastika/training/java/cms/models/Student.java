@@ -9,10 +9,29 @@ public class Student extends Object{
     private String lastName;
     private double gpa;
 
+    public Student() {
+    }
+
     public Student(int id, String firstName, String lastName, double gpa) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gpa = gpa;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setGpa(double gpa) {
         this.gpa = gpa;
     }
 

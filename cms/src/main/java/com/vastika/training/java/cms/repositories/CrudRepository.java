@@ -11,4 +11,5 @@ public interface CrudRepository<T> {
     T findById(int id);
     boolean update(T t);
     boolean deleteById(int id);
+    void insert(T t);
 }

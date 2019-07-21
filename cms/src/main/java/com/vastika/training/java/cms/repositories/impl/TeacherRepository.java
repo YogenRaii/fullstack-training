@@ -105,4 +105,9 @@ public class TeacherRepository implements CrudRepository<Teacher> {
         }
         return false;
     }
+
+    @Override
+    public void insert(Teacher teacher) {
+        // TODO
+    }
 }
