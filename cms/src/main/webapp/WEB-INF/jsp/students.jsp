@@ -1,16 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>CMS</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
+<jsp:include page="header.jsp"/>
 
 <div class="container">
     <div class="row">
@@ -43,7 +33,8 @@
                 <td>${student.gpa}</td>
                 <td>
                     <a class="btn btn-primary" href="<c:url value="/students/${student.id}/edit"/>">Edit</a>
-                    <button name="delete-button" class="btn btn-danger">Delete</button>
+                    <a class="btn btn-danger" href="<c:url value="/students/${student.id}/delete"/>">Delete</a>
+
                 </td>
             </tr>
         </c:forEach>
@@ -51,5 +42,4 @@
     </table>
 </div>
 
-</body>
-</html>
+<jsp:include page="footer.jsp"/>

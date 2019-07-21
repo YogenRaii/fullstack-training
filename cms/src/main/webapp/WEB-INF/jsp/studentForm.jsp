@@ -1,26 +1,22 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CMS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
+
+<jsp:include page="header.jsp"/>
 
 <div class="container">
-    <h2>Update Student Record</h2>
+    <h2>${formType} Student Record</h2>
     <form:form action="/students" modelAttribute="student" method="post">
-        <div class="form-group row">
-            <label for="id" class="col-sm-2 col-form-label">ID</label>
-            <div class="col-sm-10">
-                <form:input type="text" readonly="true" class="form-control" id="id" path="id"></form:input>
-            </div>
-        </div>
+        <c:choose>
+            <c:when test="${id > 0}">
+                <div class="form-group row">
+                    <label for="id" class="col-sm-2 col-form-label">ID</label>
+                    <div class="col-sm-10">
+                        <form:input type="text" readonly="true" class="form-control" id="id" path="id"></form:input>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
+
         <div class="form-group row">
             <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
             <div class="col-sm-10">
@@ -50,7 +46,4 @@
     </form:form>
 </div>
 
-
-
-</body>
-</html>
+<jsp:include page="footer.jsp"/>

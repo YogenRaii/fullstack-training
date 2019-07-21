@@ -35,6 +35,7 @@ public class StudentController {
     @RequestMapping(value = "/students/{id}/edit", method = RequestMethod.GET)
     public String getUpdateForm(Model model, @PathVariable("id") int id) {
         Student student = this.studentRepository.findById(id);
+        model.addAttribute("formType", "Update");
         model.addAttribute("student", student);
         return "studentForm";
     }
@@ -42,6 +43,7 @@ public class StudentController {
     @RequestMapping(value = "/students/add", method = RequestMethod.GET)
     public String getAddForm(Model model) {
         Student student = new Student();
+        model.addAttribute("formType", "Add");
         model.addAttribute("student", student);
         return "studentForm";
     }
@@ -54,6 +56,12 @@ public class StudentController {
             this.studentRepository.insert(student);
         }
 
+        return "redirect:/students";
+    }
+
+    @RequestMapping(value = "/students/{id}/delete", method = RequestMethod.GET)
+    public String deleteStudentRecord(@PathVariable int id) {
+        this.studentRepository.deleteById(id);
         return "redirect:/students";
     }
 }
