@@ -19,14 +19,14 @@ public class StudentController {
         List<Student> students = this.studentRepository.findAll();
 
         model.addAttribute("students", students);
-        return "students";
+        return "student/students";
     }
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     public String getInfo(Model model, @RequestParam("studentId") int id) {
         Student student = this.studentRepository.getOne(id);
         model.addAttribute("student", student);
-        return "studentInfo";
+        return "student/studentInfo";
     }
 
     @RequestMapping(value = "/students/{id}/edit", method = RequestMethod.GET)
@@ -34,7 +34,7 @@ public class StudentController {
         Student student = this.studentRepository.getOne(id);
         model.addAttribute("formType", "Update");
         model.addAttribute("student", student);
-        return "studentForm";
+        return "student/studentForm";
     }
 
     @RequestMapping(value = "/students/add", method = RequestMethod.GET)
@@ -42,7 +42,7 @@ public class StudentController {
         Student student = new Student();
         model.addAttribute("formType", "Add");
         model.addAttribute("student", student);
-        return "studentForm";
+        return "student/studentForm";
     }
 
     @RequestMapping(value = "/students", method = RequestMethod.POST)

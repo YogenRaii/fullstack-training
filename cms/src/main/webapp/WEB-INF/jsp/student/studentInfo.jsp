@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <div class="container">
     <h2>Student Details</h2>
     <div class="form-group row">
@@ -36,4 +36,4 @@
     </div>
 </div>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
