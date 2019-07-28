@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -54,7 +58,13 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Size(min = 2, max = 30)
+    @Pattern(regexp = "[a-zA-Z]")
     private String firstName;
+
+    @Size(min = 2, max = 30)
+    @Pattern(regexp = "[a-zA-Z]")
     private String lastName;
 
     private LocalDateTime dateCreated;
@@ -62,6 +72,8 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<Article> articles;
 
+//    @Valid
+//    @NotNull
     @ManyToMany
     @JoinTable(
             name = "author_category",

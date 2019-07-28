@@ -1,9 +1,13 @@
 package com.vastika.training.capstone.suchanaapi.models;
 
 import lombok.Data;
+import lombok.NonNull;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -14,12 +18,19 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Size(min = 10, max = 100)
     private String title;
+
+    @Size(min = 10, max = 1000)
     private String content;
+
     private LocalDateTime publishDate;
+
+    @Min(0)
     private long noOfViews;
 
-    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "article_tag",
             joinColumns = @JoinColumn(name = "article_id"),
@@ -28,6 +39,8 @@ public class Article {
     )
     private Set<Tag> tags;
 
+    @NotNull
+    @Valid
     @OneToOne
     private Category category;
 

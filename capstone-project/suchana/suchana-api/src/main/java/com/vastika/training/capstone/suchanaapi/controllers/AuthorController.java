@@ -1,6 +1,7 @@
 package com.vastika.training.capstone.suchanaapi.controllers;
 
 import com.vastika.training.capstone.suchanaapi.exceptions.SuchanaApiException;
+import com.vastika.training.capstone.suchanaapi.exceptions.SuchanaDataException;
 import com.vastika.training.capstone.suchanaapi.models.Article;
 import com.vastika.training.capstone.suchanaapi.models.Author;
 import com.vastika.training.capstone.suchanaapi.services.ArticleService;
@@ -9,8 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,8 +40,13 @@ public class AuthorController {
     }
 
     @RequestMapping(value = "/authors", method = RequestMethod.POST)
-    public ResponseEntity<Author> createAuthor(@RequestBody Author author) {
+    public ResponseEntity<Author> createAuthor(@Valid @RequestBody Author author,
+                                               BindingResult result) {
         log.info("createAuthor() -> {}", author);
+        if (result.hasErrors()) {
+            throw new SuchanaDataException("Invalid Payload!", result.getFieldErrors());
+        }
+
         author.setDateCreated(LocalDateTime.now());
 
         return new ResponseEntity<>(this.authorService.createAuthor(author), HttpStatus.CREATED);
@@ -46,9 +54,15 @@ public class AuthorController {
 
     // /api/v1/users/{id}/accounts
     @PostMapping("/authors/{id}/articles")
-    public ResponseEntity<Article> createArticle(@RequestBody Article article,
+    public ResponseEntity<Article> createArticle(@Valid @RequestBody Article article,
+                                                 BindingResult result,
                                                  @PathVariable("id") int authorId) {
         log.info("createArticle() -> authorId: {}", authorId);
+
+        if (result.hasErrors()) {
+            throw new SuchanaDataException("Invalid Payload!", result.getFieldErrors());
+        }
+
         article.setPublishDate(LocalDateTime.now());
 
         Author author = this.authorService.findById(authorId);

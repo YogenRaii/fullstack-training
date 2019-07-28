@@ -1,13 +1,17 @@
 package com.vastika.training.capstone.suchanaapi.controllers;
 
+import com.vastika.training.capstone.suchanaapi.exceptions.SuchanaApiException;
+import com.vastika.training.capstone.suchanaapi.exceptions.SuchanaDataException;
 import com.vastika.training.capstone.suchanaapi.models.Category;
 import com.vastika.training.capstone.suchanaapi.services.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -41,7 +45,11 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/categories", method = RequestMethod.POST)
-    public ResponseEntity<Category> createCategory(@RequestBody Category category){
+    public ResponseEntity<Category> createCategory(@Valid @RequestBody Category category,
+                                                   BindingResult result){
+        if (result.hasErrors()) {
+            throw new SuchanaDataException("Invalid Payload", result.getFieldErrors());
+        }
         return new ResponseEntity<>(this.categoryService.createCategory(category), HttpStatus.CREATED);
     }
 }
