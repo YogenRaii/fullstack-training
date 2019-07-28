@@ -1,5 +1,6 @@
 package com.vastika.training.capstone.suchanaapi.controllers;
 
+import com.vastika.training.capstone.suchanaapi.exceptions.SuchanaApiException;
 import com.vastika.training.capstone.suchanaapi.models.Article;
 import com.vastika.training.capstone.suchanaapi.models.Author;
 import com.vastika.training.capstone.suchanaapi.services.ArticleService;

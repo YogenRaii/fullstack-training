@@ -9,4 +9,8 @@ public interface ArticleService {
     List<Article> findAll();
 
     List<Article> findByAuthorId(Integer authorId);
+
+    List<Article> findByCategory(String category);
+
+    List<Article> findByTag(String tag);
 }

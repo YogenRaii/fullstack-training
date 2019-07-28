@@ -30,4 +30,14 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> findByAuthorId(Integer authorId) {
         return this.articleRepository.findAllByAuthor(authorId);
     }
+
+    @Override
+    public List<Article> findByCategory(String category) {
+        return this.articleRepository.findAllByCategory(category);
+    }
+
+    @Override
+    public List<Article> findByTag(String tag) {
+        return this.articleRepository.findAllByTag(tag);
+    }
 }
