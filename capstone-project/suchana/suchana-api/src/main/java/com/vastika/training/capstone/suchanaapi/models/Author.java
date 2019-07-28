@@ -1,9 +1,11 @@
 package com.vastika.training.capstone.suchanaapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -47,6 +49,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "author")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "articles"})
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,16 +57,16 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    private LocalDate dateCreated;
+    private LocalDateTime dateCreated;
 
-    @OneToMany
+    @OneToMany(mappedBy = "author")
     private List<Article> articles;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
     @JoinTable(
             name = "author_category",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
+            joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id")
     )
     private Set<Category> categories;
 }

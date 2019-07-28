@@ -1,8 +1,8 @@
 package com.vastika.training.capstone.suchanaapi.exceptions.handler;
 
 import com.vastika.training.capstone.suchanaapi.exceptions.SuchanaApiException;
-import com.vastika.training.capstone.suchanaapi.models.ApiError;
-import com.vastika.training.capstone.suchanaapi.models.ErrorResponse;
+import com.vastika.training.capstone.suchanaapi.models.dtos.ApiError;
+import com.vastika.training.capstone.suchanaapi.models.dtos.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

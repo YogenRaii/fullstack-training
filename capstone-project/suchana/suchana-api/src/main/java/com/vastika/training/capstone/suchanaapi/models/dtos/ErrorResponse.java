@@ -1,4 +1,4 @@
-package com.vastika.training.capstone.suchanaapi.models;
+package com.vastika.training.capstone.suchanaapi.models.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

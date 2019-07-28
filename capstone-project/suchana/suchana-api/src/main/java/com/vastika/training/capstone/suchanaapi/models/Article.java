@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
@@ -15,7 +16,7 @@ public class Article {
     private int id;
     private String title;
     private String content;
-    private LocalDate publishDate;
+    private LocalDateTime publishDate;
     private long noOfViews;
 
     @OneToMany
@@ -29,4 +30,8 @@ public class Article {
 
     @OneToOne
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 }
