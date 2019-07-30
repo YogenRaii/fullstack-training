@@ -23,6 +23,10 @@ public class TagServiceImplTest {
 
         Integer wrapperI = 5;
         int newI = wrapperI; // unboxing
+
+
+        String s = "       ";
+        System.out.println("Length of s is: " + s.length());
     }
 
 }

@@ -10,10 +10,10 @@ insert into category(id, name) values (2, 'Politics');
 insert into category(id, name) values (3, 'Entertainment');
 
 -- insert author
-insert into author(id, firstName, lastName) values (1, 'Dheeraj', 'Karki');
-insert into author(id, firstName, lastName) values (2, 'Saurav', 'Shrestha');
-insert into author(id, firstName, lastName) values (3, 'Roshan', 'Dhakal');
-insert into author(id, firstName, lastName) values (4, 'Nabin', 'Karki');
+insert into author(id, firstName, lastName, username) values (1, 'Dheeraj', 'Karki', "dheerajkarki");
+insert into author(id, firstName, lastName, username) values (2, 'Saurav', 'Shrestha', "sauravshrestha");
+insert into author(id, firstName, lastName, username) values (3, 'Roshan', 'Dhakal', "roshandhakal");
+insert into author(id, firstName, lastName, username) values (4, 'Nabin', 'Karki', "nabinkarki");
 
 -- insert author with category
 insert into author_category(author_id,category_id) values (1,1);

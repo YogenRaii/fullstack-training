@@ -3,6 +3,7 @@ package com.vastika.training.capstone.suchanaapi.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Data
@@ -13,6 +14,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank
+    @Column(unique = true)
     @Size(min = 3, max = 20)
     private String name;
 }

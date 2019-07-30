@@ -33,6 +33,10 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Tag createTag(Tag tag) {
+        Tag tagInDb = this.tagRepository.findByName(tag.getName());
+        if (tagInDb != null) {
+            throw new SuchanaApiException("Tag already exists with name: " + tag.getName(), 409);
+        }
         return this.tagRepository.save(tag);
     }
 
