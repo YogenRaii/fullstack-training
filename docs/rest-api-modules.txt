@@ -1,0 +1,9 @@
+1. Spring MVC flow
+2. Spring Modules
+3. REST methods
+4. Hibernate Validation
+5. Spring Data JPA
+6. Spring Boot
+7. Jdbc
+8. Exception handling (ControllerAdvice)
+9. Rest Client Postman

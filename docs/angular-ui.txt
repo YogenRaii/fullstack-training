@@ -1,0 +1,4 @@
+1. install node v12.x
+2. install npm v6.10.x
+3. install angular-cli v8.x
+
