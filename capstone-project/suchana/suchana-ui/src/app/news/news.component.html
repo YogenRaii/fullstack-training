@@ -1,0 +1,11 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12" *ngFor="let news of allNews">
+      <h3>{{news.title}}</h3>
+      <p>By {{news.author.firstName}} {{news.author.lastName}} | {{news.category.name}}</p>
+      <p>{{news.content}}</p>
+    </div>
+  </div>
+</div>
