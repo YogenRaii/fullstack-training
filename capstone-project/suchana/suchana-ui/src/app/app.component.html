@@ -21,14 +21,9 @@
           <li class="nav-item ml-5">
             <a class="nav-link" routerLink="/news" routerLinkActive="active">News</a>
           </li>
-          <li class="nav-item ml-5">
-            <a class="nav-link" routerLink="/sports" routerLinkActive="active">Sports</a>
-          </li>
-          <li class="nav-item ml-5">
-            <a class="nav-link" routerLink="/politics" routerLinkActive="active">Politics</a>
-          </li>
-          <li class="nav-item ml-5">
-            <a class="nav-link" href="#">Entertainment</a>
+
+          <li *ngFor="let category of categories" class="nav-item ml-5">
+            <a class="nav-link" routerLink="/{{category.name}}" routerLinkActive="active">{{category.name}}</a>
           </li>
         </ul>
       </div>
@@ -37,3 +32,9 @@
 </div>
 
 <router-outlet></router-outlet>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">&copy; Vastika Training.</span>
+  </div>
+</footer>

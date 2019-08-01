@@ -7,13 +7,19 @@ import { NewsComponent } from './news/news.component';
 import { SportsComponent } from './sports/sports.component';
 import { PoliticsComponent } from './politics/politics.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ScienceComponent } from './science/science.component';
+import { CategoriesComponent } from './category/categories/categories.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewsComponent,
     SportsComponent,
-    PoliticsComponent
+    PoliticsComponent,
+    ScienceComponent,
+    CategoriesComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,

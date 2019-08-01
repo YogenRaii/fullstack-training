@@ -1,0 +1,6 @@
+<p>categories works!</p>
+<ul>
+  <li *ngFor="let category of categories">
+    {{category.id}} {{category.name}} <a routerLink="/categories/{{category.id}}">Edit</a>
+  </li>
+</ul>
