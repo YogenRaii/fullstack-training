@@ -8,8 +8,8 @@ import { SportsComponent } from './sports/sports.component';
 import { PoliticsComponent } from './politics/politics.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ScienceComponent } from './science/science.component';
-import { CategoriesComponent } from './category/categories/categories.component';
-import { EditCategoryComponent } from './category/edit-category/edit-category.component';
+import {AdminModule} from "./admin/admin.module";
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +18,13 @@ import { EditCategoryComponent } from './category/edit-category/edit-category.co
     SportsComponent,
     PoliticsComponent,
     ScienceComponent,
-    CategoriesComponent,
-    EditCategoryComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

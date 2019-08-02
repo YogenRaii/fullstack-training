@@ -1,0 +1,91 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col col-md-2">
+      <button class="btn btn-primary pull-right" (click)="createTagForm()">Add Tag</button>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <h2>All Tags</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let tag of tags">
+        <td>{{tag.id}}</td>
+        <td>{{tag.name}}</td>
+        <td>
+          <button class="btn btn-primary mr-3" (click)="editTag(tag)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteTag(tag)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="editingTag">
+    <div class="col mb-5">
+      <h3>Edit Tag</h3>
+    </div>
+    <form class="form-horizontal" (submit)="submitTagEdit(tagToEdit)">
+      <div class="form-group row">
+        <label class="control-label col-sm-2">Id:</label>
+        <div class="col-sm-10">
+          <input readonly type="email" class="form-control" value="{{tagToEdit.id}}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-2">Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="tagName" [(ngModel)]="tagToEdit.name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary float-right">Submit</button>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="creatingTag">
+    <div class="col mb-5">
+      <h3>Edit Tag</h3>
+    </div>
+    <form class="form-horizontal" (submit)="createTag(tagToCreate)">
+<!--      <div class="form-group row">
+        <label class="control-label col-sm-2">Id:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" [(ngModel)]="tagToCreate.id">
+        </div>
+      </div>-->
+      <div class="form-group row">
+        <label class="control-label col-sm-2">Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="tagName" [(ngModel)]="tagToCreate.name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary float-right">Submit</button>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

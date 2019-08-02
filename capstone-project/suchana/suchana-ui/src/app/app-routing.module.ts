@@ -4,7 +4,6 @@ import {NewsComponent} from "./news/news.component";
 import {SportsComponent} from "./sports/sports.component";
 import {PoliticsComponent} from "./politics/politics.component";
 import {ScienceComponent} from "./science/science.component";
-import {CategoriesComponent} from "./category/categories/categories.component";
 
 const routes: Routes = [
   {
@@ -24,8 +23,9 @@ const routes: Routes = [
     component: ScienceComponent
   },
   {
-    path: 'categories',
-    component: CategoriesComponent
+    path: '',
+    redirectTo: 'news',
+    pathMatch: 'full'
   }
 ];
 
