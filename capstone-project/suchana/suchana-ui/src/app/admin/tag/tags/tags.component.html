@@ -31,6 +31,7 @@
     </table>
   </div>
 
+  <!--start edit form-->
   <div *ngIf="editingTag">
     <div class="col mb-5">
       <h3>Edit Tag</h3>
@@ -59,10 +60,11 @@
       </div>
     </form>
   </div>
+  <!--end of edit form-->
 
   <div *ngIf="creatingTag">
     <div class="col mb-5">
-      <h3>Edit Tag</h3>
+      <h3>Add Tag</h3>
     </div>
     <form class="form-horizontal" (submit)="createTag(tagToCreate)">
 <!--      <div class="form-group row">
