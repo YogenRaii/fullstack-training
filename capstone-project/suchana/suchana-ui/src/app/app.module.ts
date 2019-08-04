@@ -10,6 +10,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ScienceComponent } from './science/science.component';
 import {AdminModule} from "./admin/admin.module";
 import { HeaderComponent } from './header/header.component';
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
