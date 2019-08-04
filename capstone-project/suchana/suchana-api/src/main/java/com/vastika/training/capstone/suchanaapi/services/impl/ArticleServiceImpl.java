@@ -23,7 +23,7 @@ public class ArticleServiceImpl implements ArticleService {
         if (articleInDb != null) {
             throw new SuchanaApiException("Article exists with title: " + article.getTitle(), 409);
         }
-        // make sure article submitted is within the category author
+        // make sure article submitted is within the category user
         return articleRepository.save(article);
     }
 

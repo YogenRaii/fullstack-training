@@ -1,6 +1,7 @@
 package com.vastika.training.capstone.suchanaapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.vastika.training.capstone.suchanaapi.models.types.RoleType;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -29,7 +30,7 @@ import java.util.Set;
  * <p>
  * <p>
  * <p>
- * author
+ * user
  * --------
  * id firstName
  * 1    dheeraj
@@ -52,9 +53,9 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "author")
+@Table(name = "user")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "articles"})
-public class Author {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -75,9 +76,17 @@ public class Author {
     @Column(unique = true)
     private String username;
 
+    @NotBlank
+    @Size(min = 3, max = 30)
+    private String password;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
+
     private LocalDateTime dateCreated;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "user")
     private List<Article> articles;
 
     @Valid
