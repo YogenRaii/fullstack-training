@@ -11,7 +11,7 @@ export class NewsComponent implements OnInit {
     {
       title: "1. Test Newssss",
       content: "1. Test Conteessssss",
-      author: {
+      user: {
         firstName: "Yogen",
         lastName: "Rai"
       },
@@ -23,7 +23,7 @@ export class NewsComponent implements OnInit {
     {
       title: "2. Test Newssss",
       content: "2. Test Conteessssss",
-      author: {
+      user: {
         firstName: "Dheeraj",
         lastName: "Rai"
       },

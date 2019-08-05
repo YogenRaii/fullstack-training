@@ -21,18 +21,18 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let author of authors">
-        <td>{{author.id}}</td>
-        <td>{{author.firstName}} {{author.lastName}}</td>
-        <td>{{author.username}}</td>
+      <tr *ngFor="let user of authors">
+        <td>{{user.id}}</td>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.username}}</td>
         <td>
-                  <span *ngFor="let category of author.categories; let i = index">
+                  <span *ngFor="let category of user.categories; let i = index">
                     <span>{{category.name}}</span>
-                    <span *ngIf="author.categories.length - 1 != i">, </span>
+                    <span *ngIf="user.categories.length - 1 != i">, </span>
                   </span>
         </td>
         <td>
-          <button class="btn btn-primary mr-3" (click)="editAuthor(author)">Edit</button>
+          <button class="btn btn-primary mr-3" (click)="editAuthor(user)">Edit</button>
         </td>
       </tr>
       </tbody>

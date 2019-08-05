@@ -29,7 +29,7 @@ import java.util.Set;
  * <p>
  * <p>
  * <p>
- * author
+ * user
  * --------
  * id firstName
  * 1    dheeraj
@@ -52,9 +52,9 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "author")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "articles"})
-public class Author {
+@Table(name = "user")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "articles", "password"})
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -75,9 +75,15 @@ public class Author {
     @Column(unique = true)
     private String username;
 
+    @NotBlank
+    @Size(min = 3, max = 40)
+    private String password;
+
+    private String role;
+
     private LocalDateTime dateCreated;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "user")
     private List<Article> articles;
 
     @Valid

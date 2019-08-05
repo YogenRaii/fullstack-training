@@ -10,13 +10,13 @@ insert into category(id, name) values (2, 'Politics');
 insert into category(id, name) values (3, 'Entertainment');
 insert into category(id, name) values (4, 'Science');
 
--- insert author
-insert into author(id, firstName, lastName, username) values (1, 'Dheeraj', 'Karki', "dheerajkarki");
-insert into author(id, firstName, lastName, username) values (2, 'Saurav', 'Shrestha', "sauravshrestha");
-insert into author(id, firstName, lastName, username) values (3, 'Roshan', 'Dhakal', "roshandhakal");
-insert into author(id, firstName, lastName, username) values (4, 'Nabin', 'Karki', "nabinkarki");
+-- insert user
+insert into user(id, firstName, lastName, username, password, role) values (1, 'Dheeraj', 'Karki', 'dheerajkarki', 'dheeraj', 'ROLE_ADMIN');
+insert into user(id, firstName, lastName, username, password, role) values (2, 'Saurav', 'Shrestha', 'sauravshrestha', 'saurav', 'ROLE_AUTHOR');
+insert into user(id, firstName, lastName, username, password, role) values (3, 'Roshan', 'Dhakal', 'roshandhakal', 'roshan', 'ROLE_ADMIN');
+insert into user(id, firstName, lastName, username, password, role) values (4, 'Nabin', 'Karki', 'nabinkarki', 'nabin', 'ROLE_AUTHOR');
 
--- insert author with category
+-- insert user with category
 insert into author_category(author_id,category_id) values (1,1);
 insert into author_category(author_id,category_id) values (1,3);
 insert into author_category(author_id,category_id) values (2,3);
