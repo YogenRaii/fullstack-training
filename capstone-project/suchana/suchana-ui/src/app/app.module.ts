@@ -11,6 +11,7 @@ import { ScienceComponent } from './science/science.component';
 import {AdminModule} from "./admin/admin.module";
 import { HeaderComponent } from './header/header.component';
 import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
     AppRoutingModule,
     HttpClientModule,
     AdminModule,
+    AuthModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],

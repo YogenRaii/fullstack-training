@@ -8,11 +8,15 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'Suchana';
 
-  isLoggedIn = true;
+  isLoggedIn = false;
 
   constructor() { }
 
   ngOnInit() {
+    // TODO change this to obserable
+    if (localStorage.getItem('loggedInUser') != null) {
+      this.isLoggedIn = true;
+    }
   }
 
 }
