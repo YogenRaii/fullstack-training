@@ -54,7 +54,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "user")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "articles"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "articles", "password"})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,7 +77,7 @@ public class User {
     private String username;
 
     @NotBlank
-    @Size(min = 3, max = 30)
+    @Size(min = 3, max = 500)
     private String password;
 
     @NotNull

@@ -2,6 +2,7 @@ package com.vastika.training.capstone.suchanaapi.security;
 
 
 import com.vastika.training.capstone.suchanaapi.models.User;
+import com.vastika.training.capstone.suchanaapi.repositories.UserRepository;
 import com.vastika.training.capstone.suchanaapi.security.exceptions.JwtTokenExpiredException;
 import com.vastika.training.capstone.suchanaapi.security.exceptions.JwtTokenMalformedException;
 import com.vastika.training.capstone.suchanaapi.security.exceptions.JwtUserNotFoundException;
@@ -34,6 +35,9 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public boolean supports(Class<?> authentication) {
         return (JwtAuthenticationToken.class.isAssignableFrom(authentication));
@@ -56,7 +60,7 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
         }
 
         //validate against stored user
-        User user = this.userService.findById(parsedUser.getId());
+        User user = this.userRepository.findByUsername(parsedUser.getUsername());
 
         if (user != null) {
             if (!parsedUser.getUsername().equals(user.getUsername())) {

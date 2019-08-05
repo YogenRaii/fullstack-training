@@ -1,6 +1,7 @@
 package com.vastika.training.capstone.suchanaapi.services;
 
 import com.vastika.training.capstone.suchanaapi.models.User;
+import com.vastika.training.capstone.suchanaapi.models.dtos.LoginRequest;
 
 import java.util.List;
 
@@ -9,4 +10,6 @@ public interface UserService {
     User findById(int id);
     User update(User user);
     User createAuthor(User user);
+
+    User loadUserByUsernameAndPassword(String username, String password);
 }

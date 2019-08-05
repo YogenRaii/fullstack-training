@@ -8,7 +8,9 @@ import com.vastika.training.capstone.suchanaapi.repositories.CategoryRepository;
 import com.vastika.training.capstone.suchanaapi.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,12 +18,16 @@ import java.util.List;
 
 @Slf4j
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @Override
     public List<User> findAll() {
@@ -80,5 +86,15 @@ public class UserServiceImpl implements UserService {
         log.info("User created with id : {}", created.getId());
 
         return created;
+    }
+
+    @Override
+    public User loadUserByUsernameAndPassword(String username, String password) {
+        log.info("loadUserByUsernameAndPassword()");
+        User user = this.userRepository.findByUsername(username);
+        if (user == null || !encoder.matches(user.getPassword(), password)) {
+            throw new SuchanaApiException("Invalid Credentials!", 404);
+        }
+        return user;
     }
 }
