@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -10,13 +12,21 @@ export class AppComponent implements OnInit {
 
   isLoggedIn = false;
 
-  constructor() { }
+  constructor(private router:Router, private authService: AuthService) { }
 
   ngOnInit() {
-    // TODO change this to obserable
-    if (localStorage.getItem('loggedInUser') != null) {
-      this.isLoggedIn = true;
-    }
+    this.authService.isLoggedIn().subscribe((data) => {
+      if (data.type == 'success') {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
 }

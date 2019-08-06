@@ -21,16 +21,21 @@ export class AuthComponent implements OnInit {
   submit() {
     console.log(this.user);
     this.authService.login(this.user).subscribe((data) => {
-      localStorage.setItem('loggedInUser', data);
+      localStorage.setItem('loggedInUser', JSON.stringify(data));
       if (data.role == 'ROLE_ADMIN') {
         this.router.navigate(['/admin/tags']);
       } else if (data.role == 'ROLE_AUTHOR') {
-        this.router.navigate(['/author'])
+        this.router.navigate(['/author/articles'])
       }
+      this.authService.isLoggedIn();
     }, (error) => {
       this.loginError = true;
     })
 
+  }
+
+  cancel() {
+    this.router.navigate(['/']);
   }
 
 }
