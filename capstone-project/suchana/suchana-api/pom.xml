@@ -17,6 +17,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <javac.version>9+181-r4173-1</javac.version>
     </properties>
 
     <dependencies>

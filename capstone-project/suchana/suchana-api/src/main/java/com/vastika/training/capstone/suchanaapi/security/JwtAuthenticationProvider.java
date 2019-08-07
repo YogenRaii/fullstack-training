@@ -10,7 +10,6 @@ import com.vastika.training.capstone.suchanaapi.security.models.AuthenticatedUse
 import com.vastika.training.capstone.suchanaapi.security.models.JwtAuthenticationToken;
 import com.vastika.training.capstone.suchanaapi.security.transfer.JwtUserDto;
 import com.vastika.training.capstone.suchanaapi.security.utils.JwtTokenValidator;
-import com.vastika.training.capstone.suchanaapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
@@ -31,9 +30,6 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
 
     @Autowired
     private JwtTokenValidator jwtTokenValidator;
-
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private UserRepository userRepository;

@@ -4,7 +4,7 @@ package com.vastika.training.capstone.suchanaapi.security;
 import com.vastika.training.capstone.suchanaapi.security.exceptions.JwtTokenMissingException;
 import com.vastika.training.capstone.suchanaapi.security.models.JwtAuthenticationToken;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
@@ -28,9 +28,16 @@ public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessi
     private static final int HEADER_LENGTH = 7;
 
     private static final List<RequestMatcher> PATHS = Arrays.asList(
-            new AntPathRequestMatcher("/categories/**"),
-            new AntPathRequestMatcher("/tags/**"),
-            new AntPathRequestMatcher("/authors/**")
+            new AntPathRequestMatcher("/categories/**", HttpMethod.POST.name()),
+            new AntPathRequestMatcher("/categories/**", HttpMethod.PUT.name()),
+            new AntPathRequestMatcher("/tags/**", HttpMethod.GET.name()),
+            new AntPathRequestMatcher("/tags/**", HttpMethod.POST.name()),
+            new AntPathRequestMatcher("/tags/**", HttpMethod.PUT.name()),
+            new AntPathRequestMatcher("/tags/**", HttpMethod.DELETE.name()),
+            new AntPathRequestMatcher("/authors/**", HttpMethod.GET.name()),
+            new AntPathRequestMatcher("/authors/**", HttpMethod.POST.name()),
+            new AntPathRequestMatcher("/authors/**", HttpMethod.PUT.name()),
+            new AntPathRequestMatcher("/authors/**", HttpMethod.DELETE.name())
     );
 
     public JwtAuthenticationTokenFilter() {
@@ -40,7 +47,8 @@ public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessi
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-            throws AuthenticationException, IOException, ServletException {
+            throws AuthenticationException {
+
         String header = request.getHeader("Authorization");
 
         String authToken;

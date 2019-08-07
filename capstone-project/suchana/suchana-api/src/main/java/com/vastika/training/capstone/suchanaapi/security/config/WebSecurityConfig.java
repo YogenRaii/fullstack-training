@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -32,9 +33,8 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 @EnableAutoConfiguration
-@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private static final int ORDER = -100;
 
     @Autowired
     private JwtAuthenticationProvider authenticationProvider;
@@ -89,6 +89,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // permit swagger and signup for all
                 .authorizeRequests().antMatchers("/user/**", "/articles/**")
                 .permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.GET, "/categories").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // All others urls must be authenticated (filter for token
                 // always fires)
                 .anyRequest().authenticated()
