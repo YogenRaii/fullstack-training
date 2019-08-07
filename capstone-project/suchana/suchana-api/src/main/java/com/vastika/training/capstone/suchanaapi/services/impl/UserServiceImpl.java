@@ -87,14 +87,4 @@ public class UserServiceImpl implements UserService {
 
         return created;
     }
-
-    @Override
-    public User loadUserByUsernameAndPassword(String username, String password) {
-        log.info("loadUserByUsernameAndPassword()");
-        User user = this.userRepository.findByUsername(username);
-        if (user == null || !encoder.matches(user.getPassword(), password)) {
-            throw new SuchanaApiException("Invalid Credentials!", 404);
-        }
-        return user;
-    }
 }

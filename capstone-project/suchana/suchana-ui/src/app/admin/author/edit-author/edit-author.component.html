@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <h3>Edit Author</h3>
+  </div>
+  <div class="">
+    <div class="form-horizontal">
+      <div class="form-group row">
+        <label class="control-label col-sm-2">Id:</label>
+        <div class="col-sm-10">
+          <input readonly type="text" class="form-control" value="{{author.id}}">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-2">First Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="firstName" [(ngModel)]="author.firstName">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-2">LastName:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="lastName" [(ngModel)]="author.lastName">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-2">Username:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="username" [(ngModel)]="author.username">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="control-label col-sm-2">Categories:</label>
+        <ng-multiselect-dropdown class="col-sm-10"
+          [placeholder]="'custom placeholder'"
+          [data]="categories"
+          [(ngModel)]="author.categories"
+          [settings]="dropdownSettings"
+        >
+        </ng-multiselect-dropdown>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary float-right" (click)="submit()">Submit</button>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

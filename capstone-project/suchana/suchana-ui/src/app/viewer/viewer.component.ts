@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryService} from "../services/category.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-viewer',
+  templateUrl: './viewer.component.html',
+  styleUrls: ['./viewer.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class ViewerComponent implements OnInit {
 
   categories = [];
 
@@ -19,4 +19,5 @@ export class HeaderComponent implements OnInit {
       this.categories = data;
     } );
   }
+
 }

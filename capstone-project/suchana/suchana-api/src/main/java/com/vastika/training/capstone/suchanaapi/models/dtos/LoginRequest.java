@@ -8,9 +8,9 @@ import javax.validation.constraints.Size;
 @Data
 public class LoginRequest {
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 20)
     private String username;
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 20)
     private String password;
 }

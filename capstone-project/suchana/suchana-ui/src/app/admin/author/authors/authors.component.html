@@ -1,0 +1,44 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col col-md-2">
+      <button class="btn btn-primary pull-right" (click)="createAuthorForm()">Add Authors</button>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <h2>All Authors</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Categories</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of authors">
+        <td>{{user.id}}</td>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.username}}</td>
+        <td>
+                  <span *ngFor="let category of user.categories; let i = index">
+                    <span>{{category.name}}</span>
+                    <span *ngIf="user.categories.length - 1 != i">, </span>
+                  </span>
+        </td>
+        <td>
+          <button class="btn btn-primary mr-3" (click)="editAuthor(user)">Edit</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-edit-author *ngIf="author" [author]="author" [categories]="categories"
+                   (upateAuthor)="submitEditAuthor()" (cancelEvent)="cancel()"></app-edit-author>
+</div>

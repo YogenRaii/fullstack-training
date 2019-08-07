@@ -43,7 +43,8 @@ public class AuthController {
         JwtUserDto dto = new JwtUserDto(authenticatedUser.getId(), authenticatedUser.getUsername(),role);
         String token = JwtTokenGenerator.generateToken(dto, jwtSecret);
 
-        LoginSuccessResponse response = new LoginSuccessResponse(authenticatedUser.getUsername(), token, role);
+        LoginSuccessResponse response = new LoginSuccessResponse(authenticatedUser.getId(), authenticatedUser.getUsername(), token, role);
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

@@ -6,12 +6,11 @@ import {Constants} from "../models/Constants";
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
-  API_URL = Constants.API_BASE_URL + "/categories";
+export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
-  getCategories(): Observable<any> {
-    return this.http.get(this.API_URL);
+  getArticles(authorId): Observable<any> {
+    return this.http.get(Constants.API_BASE_URL + "/authors/" + authorId + "/articles");
   }
 }
