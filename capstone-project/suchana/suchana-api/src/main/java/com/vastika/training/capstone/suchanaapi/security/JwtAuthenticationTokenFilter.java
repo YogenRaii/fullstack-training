@@ -38,7 +38,7 @@ public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessi
             new AntPathRequestMatcher("/authors/**", HttpMethod.POST.name()),
             new AntPathRequestMatcher("/authors/**", HttpMethod.PUT.name()),
             new AntPathRequestMatcher("/authors/**", HttpMethod.DELETE.name())
-    );
+            );
 
     public JwtAuthenticationTokenFilter() {
         super(new OrRequestMatcher(PATHS));
