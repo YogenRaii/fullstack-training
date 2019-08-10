@@ -51,4 +51,8 @@ export class AuthorsComponent implements OnInit {
     this.author = null;
   }
 
+  createAuthorForm() {
+
+  }
+
 }

@@ -17,4 +17,8 @@ export class ArticlesComponent implements OnInit {
     this.articleService.getArticles(author.id).subscribe((data) => this.articles = data);
   }
 
+  createAuthorForm() {
+
+  }
+
 }
