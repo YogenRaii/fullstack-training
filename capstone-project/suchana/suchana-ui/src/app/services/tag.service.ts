@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {AuthService} from "./auth.service";
 
@@ -13,7 +13,10 @@ export class TagService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   getTags(): Observable<any> {
-    return this.http.get(this.API_BASE_URL + "/tags");
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('loggedInUser')).token
+    });
+    return this.http.get(this.API_BASE_URL + "/tags", {headers});
   }
 
   updateTag(tag): Observable<any> {
