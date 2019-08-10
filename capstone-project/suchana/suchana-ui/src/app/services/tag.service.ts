@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class TagService {
 
   API_BASE_URL = "http://localhost:8080";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   getTags(): Observable<any> {
     return this.http.get(this.API_BASE_URL + "/tags");

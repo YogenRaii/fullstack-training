@@ -9,5 +9,4 @@ public interface UserService {
     User findById(int id);
     User update(User user);
     User createAuthor(User user);
-    User loadUserByUsernameAndPassword(String username, String password);
 }
