@@ -12,6 +12,5 @@
 
     <modules>
         <module>suchana-api</module>
-        <module>suchana-ui</module>
     </modules>
 </project>

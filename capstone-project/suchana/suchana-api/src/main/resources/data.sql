@@ -11,10 +11,10 @@ insert into category(id, name) values (3, 'Entertainment');
 insert into category(id, name) values (4, 'Science');
 
 -- insert user
-insert into user(id, firstName, lastName, username, password, role) values (1, 'Dheeraj', 'Karki', 'dheerajkarki', 'dheeraj', 'ROLE_ADMIN');
-insert into user(id, firstName, lastName, username, password, role) values (2, 'Saurav', 'Shrestha', 'sauravshrestha', 'saurav', 'ROLE_AUTHOR');
-insert into user(id, firstName, lastName, username, password, role) values (3, 'Roshan', 'Dhakal', 'roshandhakal', 'roshan', 'ROLE_ADMIN');
-insert into user(id, firstName, lastName, username, password, role) values (4, 'Nabin', 'Karki', 'nabinkarki', 'nabin', 'ROLE_AUTHOR');
+insert into user(id, firstName, lastName, username, password, role) values (1, 'Dheeraj', 'Karki', 'dheerajkarki', '$2a$10$fTI1ygMp8xwE7MC/UdORqeh3on5VSKtkZjV2jq09jvbxv2lzSzfFe', 'ROLE_ADMIN');
+insert into user(id, firstName, lastName, username, password, role) values (2, 'Saurav', 'Shrestha', 'sauravshrestha', '$2a$10$JO.yNSzUEIL.ZGfXUtJwF.9OWIA9ou6fIU584aSKXD9aLaIvMaPEa', 'ROLE_AUTHOR');
+insert into user(id, firstName, lastName, username, password, role) values (3, 'Roshan', 'Dhakal', 'roshandhakal', '$2a$10$p38JPpUCBECJ8zdSDeX1DOn22P3BJgshogBsCioSFvz9evYECs9wu', 'ROLE_ADMIN');
+insert into user(id, firstName, lastName, username, password, role) values (4, 'Nabin', 'Karki', 'nabinkarki', '$2a$10$Webjf/LmtkdzUX5y07GRgOVWmySKE4hdlE28vUb.XoyFY5N2mpzAO', 'ROLE_AUTHOR');
 
 -- insert user with category
 insert into author_category(author_id,category_id) values (1,1);

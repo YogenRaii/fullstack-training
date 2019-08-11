@@ -1,6 +1,7 @@
 package com.vastika.training.capstone.suchanaapi.services.impl;
 
 import org.junit.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,6 +28,12 @@ public class TagServiceImplTest {
 
         String s = "       ";
         System.out.println("Length of s is: " + s.length());
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.encode("roshan"));
+        System.out.println(encoder.encode("dheeraj"));
+        System.out.println(encoder.encode("nabin"));
+        System.out.println(encoder.encode("saurav"));
     }
 
 }

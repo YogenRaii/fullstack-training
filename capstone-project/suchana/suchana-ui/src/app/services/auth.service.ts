@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {LoginRequest} from "../models/LoginRequest";
 import {Observable} from "rxjs/internal/Observable";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Constants} from "../models/Constants";
 import {ReplaySubject} from "rxjs/internal/ReplaySubject";
 
@@ -14,7 +14,13 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(user: LoginRequest): Observable<any> {
-    return this.http.post(Constants.API_BASE_URL + "/user/login", user);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    const body = new HttpParams()
+      .set('username', user.username)
+      .set('password', user.password);
+    return this.http.post(Constants.API_BASE_URL + "/user/login", body.toString(), {headers});
   }
 
   loggedInUser() {
