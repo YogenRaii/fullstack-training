@@ -20,7 +20,7 @@ public class PassByReference {
         Scanner scanner = new Scanner(System.in);
         int answer = scanner.nextInt();
 
-        if (question.getCorrectAnswer().equals(question.getOptions()[answer -1])) {
+        if (question.getCorrectAnswer().equals(question.getOptions()[answer - 1])) {
             System.out.println("Correct");
         } else {
             System.out.println("Wrong");
