@@ -1,0 +1,35 @@
+#properties
+#a.b.c=vlaue
+#
+#jsons
+#{
+#  "a" : {
+#          "b" : {
+#                  "c": "value"
+#          }
+#  }
+#}
+#
+#yaml
+#a:
+#  b:
+#    c: value
+
+
+spring:
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    initialization-mode: always
+    url: jdbc:postgresql://localhost:5432/postgres
+    username:
+    password:
+
+#spring.jpa.hibernate.ddl-auto=update
+#spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_example
+#spring.datasource.username=springuser
+#spring.datasource.password=ThePassword
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.jpa.show-sql: true
