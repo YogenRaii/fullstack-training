@@ -8,6 +8,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
+    @Column(unique = true, nullable = false)
     private String content;
     private String option1;
     private String option2;
