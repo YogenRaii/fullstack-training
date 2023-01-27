@@ -2,6 +2,8 @@ package com.javaclasses.webexamples.controllers;
 
 import com.javaclasses.webexamples.models.Question;
 import com.javaclasses.webexamples.repositories.QuestionsRepository;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +44,15 @@ public class QuestionController {
     }
 
     @PostMapping
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "201", description = "Creates question"),
+                    @ApiResponse(responseCode = "400", description = "Data Error"),
+                    @ApiResponse(responseCode = "409", description = "Already exists"),
+            }
+    )
     public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
+
         Question created = questionsRepository.save(question);
         return ResponseEntity
                 .created(
